@@ -1,0 +1,11 @@
+# dependencies
+node_modules/
+
+# build scratch + local screenshots
+_build/
+temporary screenshots/
+
+# raw source material (kept out of the public repo)
+תיק עבודות/
+פלייר.PNG
+Frontend Website Rules CLAUDE.md
