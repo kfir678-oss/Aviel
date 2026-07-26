@@ -1,0 +1,19 @@
+{
+  "eyebrow": "תיק עבודות",
+  "title": "רגעים שדיברו בשקט",
+  "lead": "מבחר מתוך אלפי הרגעים שתיעדתי. כל תמונה - סיפור אמיתי של משפחה אחת.",
+  "items": [
+    { "image": "/assets/img/brit-baby.jpg", "image_alt": "צילום ברית - הרב מחזיק את התינוק", "caption": "ברית · הרגע הראשון" },
+    { "image": "/assets/img/kids-running.jpg", "image_alt": "ילדה רצה על הדשא - צילום חלאקה ומשפחה", "caption": "ילדות · חופש" },
+    { "image": "/assets/img/newborn-hands.jpg", "image_alt": "צילום ניו בורן - ידיים קטנות של תינוק", "caption": "ניו בורן · שבריריות" },
+    { "image": "/assets/img/brit-reading.jpg", "image_alt": "קריאה מהתורה בברית", "caption": "ברית · מסורת" },
+    { "image": "/assets/img/family-flowers.jpg", "image_alt": "אמא וילדים בשדה פרחים", "caption": "משפחה · אביב" },
+    { "image": "/assets/img/newborn-bw.jpg", "image_alt": "צילום ניו בורן בשחור לבן", "caption": "ניו בורן · שחור לבן" },
+    { "image": "/assets/img/kids-toddler.jpg", "image_alt": "פעוטה מחייכת בפארק", "caption": "ילדות · חיוך" },
+    { "image": "/assets/img/couple-2.jpg", "image_alt": "זוג עם תינוק בטבע", "caption": "זוגיות · חיבור" },
+    { "image": "/assets/img/detail-judaica.jpg", "image_alt": "עבודת יודאיקה מעץ זית", "caption": "פרטים · מסורת" },
+    { "image": "/assets/img/newborn-2.jpg", "image_alt": "פני תינוק ישן", "caption": "ניו בורן · שלווה" },
+    { "image": "/assets/img/brit-tallit.jpg", "image_alt": "תינוק בטלית בברית", "caption": "ברית · כבוד" },
+    { "image": "/assets/img/torah-tefillin-1.jpg", "image_alt": "הנחת תפילין ושירה בעלייה לתורה", "caption": "עלייה לתורה · גאווה" }
+  ]
+}

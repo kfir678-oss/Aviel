@@ -1,3 +1,28 @@
+---
+permalink: /index.html
+---
+{%- macro waIcon() -%}
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+{%- endmacro -%}
+{%- macro phoneIcon() -%}
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+{%- endmacro -%}
+{%- macro pointIcon(name) -%}
+{%- if name == "eye" -%}
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg>
+{%- elif name == "clock" -%}
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>
+{%- elif name == "hands" -%}
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21l8.84-8.61a5.5 5.5 0 0 0 0-7.78z" stroke-linejoin="round"/></svg>
+{%- elif name == "camera" -%}
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5h3l1.5-2.5h9L18 8.5h3v10H3z" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.4"/></svg>
+{%- elif name == "star" -%}
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8z" stroke-linejoin="round"/></svg>
+{%- else -%}
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.35-9.5-8.5C.5 9 2 5 5.5 5 8 5 12 8 12 8s4-3 6.5-3C22 5 23.5 9 21.5 12.5 19 16.65 12 21 12 21z" stroke-linejoin="round"/></svg>
+{%- endif -%}
+{%- endmacro -%}
+{%- set waBase = "https://wa.me/" + settings.whatsapp_number -%}
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -5,28 +30,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- ============ SEO ============ -->
-<title>אביאל מלכא | צלם אירועים - בריתות, בר מצווה, ניו בורן וחלאקה | מבעד לעדשה</title>
-<meta name="description" content="אביאל מלכא - צלם אירועים מקצועי לבריתות, עליות לתורה, ניו בורן, חלאקה וצילומי זוגיות. תיעוד רגיש ואמנותי של הרגעים הגדולים, במחירים נוחים לכל כיס. לשריון תאריך: 052-555-1604." />
-<meta name="keywords" content="צלם אירועים, צילום ברית, צלם ברית מילה, צילום בר מצווה, עלייה לתורה, ניו בורן, צילומי ניו בורן, חלאקה, צילומי זוגיות, save the date, צלם דתי, אביאל מלכא, מבעד לעדשה" />
-<meta name="author" content="אביאל מלכא" />
+<title>{{ seo.title }}</title>
+<meta name="description" content="{{ seo.description }}" />
+<meta name="keywords" content="{{ seo.keywords }}" />
+<meta name="author" content="{{ settings.photographer }}" />
 <meta name="robots" content="index, follow" />
 <meta name="theme-color" content="#211913" />
-<link rel="canonical" href="https://aviel-malka.co.il/" />
-<link rel="icon" type="image/png" href="assets/img/favicon.png" />
-<link rel="apple-touch-icon" href="assets/img/favicon.png" />
+<link rel="canonical" href="{{ settings.site_url }}" />
+<link rel="icon" type="image/png" href="{{ settings.favicon }}" />
+<link rel="apple-touch-icon" href="{{ settings.favicon }}" />
 
 <!-- ============ Open Graph / Social ============ -->
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="he_IL" />
-<meta property="og:site_name" content="מבעד לעדשה - אביאל מלכא" />
-<meta property="og:title" content="אביאל מלכא | צלם אירועים - בריתות, בר מצווה, ניו בורן וחלאקה" />
-<meta property="og:description" content="תיעוד רגיש ואמנותי של הרגעים הגדולים במשפחה. מחירים נוחים לכל כיס. לשריון תאריך: 052-555-1604" />
-<meta property="og:image" content="assets/img/hero-blessing.jpg" />
-<meta property="og:url" content="https://aviel-malka.co.il/" />
+<meta property="og:site_name" content="{{ settings.brand_name }} - {{ settings.photographer }}" />
+<meta property="og:title" content="{{ seo.og_title }}" />
+<meta property="og:description" content="{{ seo.og_description }}" />
+<meta property="og:image" content="{{ seo.og_image }}" />
+<meta property="og:url" content="{{ settings.site_url }}" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="אביאל מלכא | צלם אירועים - מבעד לעדשה" />
-<meta name="twitter:description" content="תיעוד רגיש ואמנותי של הרגעים הגדולים במשפחה. מחירים נוחים לכל כיס." />
-<meta name="twitter:image" content="assets/img/hero-blessing.jpg" />
+<meta name="twitter:title" content="{{ seo.og_title }}" />
+<meta name="twitter:description" content="{{ seo.og_description }}" />
+<meta name="twitter:image" content="{{ seo.og_image }}" />
 
 <!-- ============ Fonts ============ -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,16 +63,16 @@
 {
   "@context": "https://schema.org",
   "@type": "Photograph",
-  "@id": "https://aviel-malka.co.il/#business",
-  "name": "מבעד לעדשה - אביאל מלכא",
-  "image": "https://aviel-malka.co.il/assets/img/hero-blessing.jpg",
-  "description": "צלם אירועים מקצועי לבריתות, עליות לתורה, ניו בורן, חלאקה וצילומי זוגיות. תיעוד רגיש ואמנותי במחירים נוחים.",
-  "telephone": "+972-52-555-1604",
+  "@id": "{{ settings.site_url }}#business",
+  "name": "{{ settings.brand_name }} - {{ settings.photographer }}",
+  "image": "{{ settings.site_url }}{{ seo.og_image | replace("/", "", 1) }}",
+  "description": {{ seo.description | dump | safe }},
+  "telephone": "{{ settings.phone_intl }}",
   "priceRange": "₪₪",
   "areaServed": { "@type": "Country", "name": "ישראל" },
-  "founder": { "@type": "Person", "name": "אביאל מלכא" },
-  "knowsAbout": ["צילום ברית מילה", "צילום בר מצווה", "צילומי ניו בורן", "צילום חלאקה", "צילומי זוגיות", "Save the date"],
-  "sameAs": []
+  "founder": { "@type": "Person", "name": "{{ settings.photographer }}" },
+  "knowsAbout": [{% for k in seo.knows_about %}{{ k.term | dump | safe }}{{ "," if not loop.last }}{% endfor %}],
+  "sameAs": [{% for l in seo.social_links %}{{ l.url | dump | safe }}{{ "," if not loop.last }}{% endfor %}]
 }
 </script>
 <script type="application/ld+json">
@@ -55,18 +80,15 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "serviceType": "צילום אירועים ואירועים משפחתיים",
-  "provider": { "@type": "Person", "name": "אביאל מלכא", "telephone": "+972-52-555-1604" },
+  "provider": { "@type": "Person", "name": "{{ settings.photographer }}", "telephone": "{{ settings.phone_intl }}" },
   "areaServed": "ישראל",
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "שירותי צילום",
     "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "צילום ברית מילה" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "צילום עלייה לתורה ובר מצווה" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "צילומי ניו בורן" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "צילום חלאקה" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "צילומי זוגיות" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Save the date" } }
+      {%- for k in seo.knows_about %}
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": {{ k.term | dump | safe }} } }{{ "," if not loop.last }}
+      {%- endfor %}
     ]
   }
 }
@@ -117,7 +139,9 @@ body{
 h1,h2,h3,h4{font-family:var(--serif);font-weight:700;line-height:1.12;margin:0;letter-spacing:-.01em}
 p{margin:0}
 a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
+/* height:auto מנטרל את מאפייני width/height שהפלאגין מוסיף לתמונות
+   (הם שם כדי למנוע קפיצת פריסה בטעינה) - בלעדיו התמונות נמתחות */
+img{max-width:100%;display:block;height:auto}
 :focus-visible{outline:2.5px solid var(--gold-deep);outline-offset:3px;border-radius:4px}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
@@ -393,9 +417,9 @@ img{max-width:100%;display:block}
 <!-- ============ HEADER ============ -->
 <header class="header" id="header">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="מבעד לעדשה - אביאל מלכא, לדף הבית">
-      <img src="assets/img/logo-emblem-t.png" alt="לוגו מבעד לעדשה" />
-      <span class="bt"><b>מבעד לעדשה</b><span>אביאל מלכא · צלם אירועים</span></span>
+    <a class="brand" href="#top" aria-label="{{ settings.brand_name }} - {{ settings.photographer }}, לדף הבית">
+      <img src="{{ settings.logo }}" alt="לוגו {{ settings.brand_name }}" eleventy:ignore />
+      <span class="bt"><b>{{ settings.brand_name }}</b><span>{{ settings.brand_tagline }}</span></span>
     </a>
     <nav class="nav" aria-label="ניווט ראשי">
       <a href="#services">שירותים</a>
@@ -404,8 +428,8 @@ img{max-width:100%;display:block}
       <a href="#process">איך זה עובד</a>
       <a href="#contact">צור קשר</a>
     </nav>
-    <a class="btn btn-wa header-cta" href="https://wa.me/972525551604?text=%D7%94%D7%99%D7%99%20%D7%90%D7%91%D7%99%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A6%D7%99%D7%9C%D7%95%D7%9D" target="_blank" rel="noopener" aria-label="שליחת הודעה בוואטסאפ">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <a class="btn btn-wa header-cta" href="{{ waBase }}?text={{ hero.cta_message | urlencode }}" target="_blank" rel="noopener" aria-label="שליחת הודעה בוואטסאפ">
+      {{ waIcon() }}
       וואטסאפ
     </a>
   </div>
@@ -414,31 +438,31 @@ img{max-width:100%;display:block}
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero-bg">
-    <img src="assets/img/hero-blessing.jpg" alt="רגע מרגש של ברכה ותיעוד אישי בעדשה של אביאל מלכא" fetchpriority="high" />
+    <img src="{{ hero.image }}" alt="{{ hero.image_alt }}" sizes="100vw" fetchpriority="high" />
   </div>
   <div class="viewfinder hero-frame" aria-hidden="true">
     <span class="vf tl"></span><span class="vf tr"></span><span class="vf bl"></span><span class="vf br"></span>
   </div>
-  <div class="rec" aria-hidden="true"><span class="blink"></span>REC · מבעד לעדשה</div>
+  <div class="rec" aria-hidden="true"><span class="blink"></span>REC · {{ settings.brand_name }}</div>
   <div class="wrap">
     <div class="hero-inner">
-      <span class="eyebrow" style="color:var(--gold-soft)"><span class="dot"></span>צילום אירועים ורגעים משפחתיים</span>
-      <h1>הרגעים הגדולים של המשפחה <em>נשמרים לנצח</em></h1>
-      <p class="sub">אני אביאל מלכא, מתעד בריתות, עליות לתורה, ניו בורן וחלאקות ברגישות, בטעם ובאהבה - כדי שבעוד שנים תוכלו לחזור בדיוק לרגע הזה. מחירים נוחים לכל כיס.</p>
+      <span class="eyebrow" style="color:var(--gold-soft)"><span class="dot"></span>{{ hero.eyebrow }}</span>
+      <h1>{{ hero.title }} <em>{{ hero.title_accent }}</em></h1>
+      <p class="sub">{{ hero.sub }}</p>
       <div class="hero-cta">
-        <a class="btn btn-wa" href="https://wa.me/972525551604?text=%D7%94%D7%99%D7%99%20%D7%90%D7%91%D7%99%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%2F%D7%AA%20%D7%9C%D7%A9%D7%A8%D7%99%D7%99%D7%9F%20%D7%AA%D7%90%D7%A8%D7%99%D7%9A%20%D7%9C%D7%A6%D7%99%D7%9C%D7%95%D7%9D" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          לשריון תאריך בוואטסאפ
+        <a class="btn btn-wa" href="{{ waBase }}?text={{ hero.cta_message | urlencode }}" target="_blank" rel="noopener">
+          {{ waIcon() }}
+          {{ hero.cta_label }}
         </a>
-        <a class="btn btn-ghost" href="tel:+972525551604">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          052-555-1604
+        <a class="btn btn-ghost" href="tel:{{ settings.phone_intl }}">
+          {{ phoneIcon() }}
+          {{ settings.phone_display }}
         </a>
       </div>
       <ul class="hero-trust">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>מחירים נוחים לכל כיס</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>יחס אישי וזמינות גבוהה</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>אספקה מהירה</li>
+        {%- for t in hero.trust %}
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ t.text }}</li>
+        {%- endfor %}
       </ul>
     </div>
   </div>
@@ -448,41 +472,18 @@ img{max-width:100%;display:block}
 <section class="section services" id="services">
   <div class="wrap">
     <div class="center-head reveal" style="max-width:640px">
-      <span class="eyebrow center"><span class="dot"></span>מה מצלמים</span>
-      <h2 class="section-title">כל רגע קדוש - יש לו סיפור</h2>
-      <p class="section-lead">מהברית הראשונה ועד היום הגדול, אני כאן לתעד את המסורת, השמחה והרגש. בחרו את האירוע שלכם:</p>
+      <span class="eyebrow center"><span class="dot"></span>{{ services.eyebrow }}</span>
+      <h2 class="section-title">{{ services.title }}</h2>
+      <p class="section-lead">{{ services.lead }}</p>
     </div>
     <div class="svc-grid">
+      {%- for s in services.items %}
       <article class="svc reveal">
-        <img src="assets/img/brit-tallit.jpg" alt="צילום ברית מילה - תינוק בטלית בזרועות הסבא" loading="lazy" />
-        <span class="num">01</span>
-        <div class="svc-body"><h3>בריתות</h3><p>היום שבו הכל מתחיל. תיעוד מכובד ורגיש של הכניסה בבריתו של אברהם אבינו - בלי לפספס אף דמעה של התרגשות.</p></div>
+        <img src="{{ s.image }}" alt="{{ s.image_alt }}" sizes="(max-width:620px) 100vw, (max-width:960px) 50vw, 33vw" loading="lazy" />
+        <span class="num">{{ "0" if loop.index < 10 }}{{ loop.index }}</span>
+        <div class="svc-body"><h3>{{ s.title }}</h3><p>{{ s.text }}</p></div>
       </article>
-      <article class="svc reveal">
-        <img src="assets/img/torah-tefillin-1.jpg" alt="צילום עלייה לתורה ובר מצווה - הנחת תפילין ושירה" loading="lazy" />
-        <span class="num">02</span>
-        <div class="svc-body"><h3>עלייה לתורה ובר מצווה</h3><p>מהנחת התפילין הראשונה ועד ריקוד ההודיה - כל רגע של גאווה יהודית, מתועד לדורות.</p></div>
-      </article>
-      <article class="svc reveal">
-        <img src="assets/img/newborn-face.jpg" alt="צילומי ניו בורן - תינוק בימיו הראשונים" loading="lazy" />
-        <span class="num">03</span>
-        <div class="svc-body"><h3>ניו בורן</h3><p>הימים הראשונים והשבריריים חולפים מהר. צילומים עדינים ונקיים לתינוק ולמשפחה - בבית או בסטודיו.</p></div>
-      </article>
-      <article class="svc reveal">
-        <img src="assets/img/kids-boy.jpg" alt="צילום חלאקה - התספורת הראשונה" loading="lazy" />
-        <span class="num">04</span>
-        <div class="svc-body"><h3>חלאקה</h3><p>התספורת הראשונה, הצחוקים והמסורת. צילומים חיים ומלאי שמחה - בפארק, באולם או במירון.</p></div>
-      </article>
-      <article class="svc reveal">
-        <img src="assets/img/couple-2.jpg" alt="צילומי זוגיות - זוג עם תינוק בטבע" loading="lazy" />
-        <span class="num">05</span>
-        <div class="svc-body"><h3>צילומי זוגיות ומשפחה</h3><p>אתם, האהבה והחיבור. צילומים טבעיים ומחמיאים בטבע או בסטודיו - מסגרת מושלמת לבית.</p></div>
-      </article>
-      <article class="svc reveal">
-        <img src="assets/img/couple-1.jpg" alt="Save the date - צילום להזמנה לאירוע" loading="lazy" />
-        <span class="num">06</span>
-        <div class="svc-body"><h3>Save the date</h3><p>פותחים את האירוע בהזמנה מרגשת שאי אפשר להתעלם ממנה - ומזמינים את כולם עוד לפני שהתחיל.</p></div>
-      </article>
+      {%- endfor %}
     </div>
   </div>
 </section>
@@ -492,23 +493,22 @@ img{max-width:100%;display:block}
   <div class="wrap">
     <div class="about-photo reveal">
       <div class="frame">
-        <img src="assets/img/torah-tefillin-2.jpg" alt="אביאל מלכא בעבודתו - תיעוד רגע של שירה והתרגשות" loading="lazy" />
+        <img src="{{ about.image }}" alt="{{ about.image_alt }}" sizes="(max-width:960px) 420px, 40vw" loading="lazy" />
         <div class="viewfinder" aria-hidden="true"><span class="vf tl"></span><span class="vf tr"></span><span class="vf bl"></span><span class="vf br"></span></div>
       </div>
-      <div class="about-badge"><b>מבעד לעדשה</b><span>הרגע שלכם, מנקודת המבט שלי</span></div>
+      <div class="about-badge"><b>{{ about.badge_title }}</b><span>{{ about.badge_text }}</span></div>
     </div>
     <div class="about-text reveal">
-      <span class="eyebrow"><span class="dot"></span>נעים להכיר</span>
-      <h2>אני אביאל, ואני מצלם רגעים שלא חוזרים</h2>
-      <p class="lead">אירוע קורה פעם אחת. הדמעה של הסבא, החיוך הראשון של התינוק, הרעד בקול בעלייה לתורה - הם לא ימתינו לצילום שני.</p>
-      <p class="body">בגלל זה אני עובד בשקט, בלי לביים ובלי להפריע, ומחכה לרגע האמיתי שיקרה מעצמו. התוצאה היא תמונות שמרגישות בדיוק כמו שהאירוע הרגיש - חמות, אמיתיות ומלאות רגש - שתשמחו לתלות על הקיר ולהעביר הלאה במשפחה.</p>
+      <span class="eyebrow"><span class="dot"></span>{{ about.eyebrow }}</span>
+      <h2>{{ about.title }}</h2>
+      <p class="lead">{{ about.lead }}</p>
+      <p class="body">{{ about.body }}</p>
       <ul class="why">
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.35-9.5-8.5C.5 9 2 5 5.5 5 8 5 12 8 12 8s4-3 6.5-3C22 5 23.5 9 21.5 12.5 19 16.65 12 21 12 21z" stroke-linejoin="round"/></svg></span><div><b>רגישות לרגע</b><span>קולט את ההתרגשות האמיתית ברגע שהיא קורית</span></div></li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg></span><div><b>עין אמנותית</b><span>הרכב, אור וצבע - תמונות שנראות יוקרתיות</span></div></li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></span><div><b>אספקה מהירה</b><span>מקבלים את התמונות הערוכות בזמן קצר</span></div></li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21l8.84-8.61a5.5 5.5 0 0 0 0-7.78z" stroke-linejoin="round"/></svg></span><div><b>יחס אישי והוגן</b><span>ליווי צמוד ומחירים נוחים לכל כיס</span></div></li>
+        {%- for p in about.points %}
+        <li><span class="ic">{{ pointIcon(p.icon) }}</span><div><b>{{ p.title }}</b><span>{{ p.text }}</span></div></li>
+        {%- endfor %}
       </ul>
-      <p class="about-sign">אביאל מלכא</p>
+      <p class="about-sign">{{ about.signature }}</p>
     </div>
   </div>
 </section>
@@ -517,23 +517,14 @@ img{max-width:100%;display:block}
 <section class="section portfolio" id="portfolio">
   <div class="wrap">
     <div class="center-head reveal" style="max-width:640px">
-      <span class="eyebrow center"><span class="dot"></span>תיק עבודות</span>
-      <h2 class="section-title">רגעים שדיברו בשקט</h2>
-      <p class="section-lead">מבחר מתוך אלפי הרגעים שתיעדתי. כל תמונה - סיפור אמיתי של משפחה אחת.</p>
+      <span class="eyebrow center"><span class="dot"></span>{{ portfolio.eyebrow }}</span>
+      <h2 class="section-title">{{ portfolio.title }}</h2>
+      <p class="section-lead">{{ portfolio.lead }}</p>
     </div>
     <div class="gallery">
-      <figure class="reveal"><img src="assets/img/brit-baby.jpg" alt="צילום ברית - הרב מחזיק את התינוק" loading="lazy"><figcaption>ברית · הרגע הראשון</figcaption></figure>
-      <figure class="reveal"><img src="assets/img/kids-running.jpg" alt="ילדה רצה על הדשא - צילום חלאקה ומשפחה" loading="lazy"><figcaption>ילדות · חופש</figcaption></figure>
-      <figure class="reveal"><img src="assets/img/newborn-hands.jpg" alt="צילום ניו בורן - ידיים קטנות של תינוק" loading="lazy"><figcaption>ניו בורן · שבריריות</figcaption></figure>
-      <figure class="reveal"><img src="assets/img/brit-reading.jpg" alt="קריאה מהתורה בברית" loading="lazy"><figcaption>ברית · מסורת</figcaption></figure>
-      <figure class="reveal"><img src="assets/img/family-flowers.jpg" alt="אמא וילדים בשדה פרחים" loading="lazy"><figcaption>משפחה · אביב</figcaption></figure>
-      <figure class="reveal"><img src="assets/img/newborn-bw.jpg" alt="צילום ניו בורן בשחור לבן" loading="lazy"><figcaption>ניו בורן · שחור לבן</figcaption></figure>
-      <figure class="reveal"><img src="assets/img/kids-toddler.jpg" alt="פעוטה מחייכת בפארק" loading="lazy"><figcaption>ילדות · חיוך</figcaption></figure>
-      <figure class="reveal"><img src="assets/img/couple-2.jpg" alt="זוג עם תינוק בטבע" loading="lazy"><figcaption>זוגיות · חיבור</figcaption></figure>
-      <figure class="reveal"><img src="assets/img/detail-judaica.jpg" alt="עבודת יודאיקה מעץ זית" loading="lazy"><figcaption>פרטים · מסורת</figcaption></figure>
-      <figure class="reveal"><img src="assets/img/newborn-2.jpg" alt="פני תינוק ישן" loading="lazy"><figcaption>ניו בורן · שלווה</figcaption></figure>
-      <figure class="reveal"><img src="assets/img/brit-tallit.jpg" alt="תינוק בטלית בברית" loading="lazy"><figcaption>ברית · כבוד</figcaption></figure>
-      <figure class="reveal"><img src="assets/img/torah-tefillin-1.jpg" alt="הנחת תפילין ושירה בעלייה לתורה" loading="lazy"><figcaption>עלייה לתורה · גאווה</figcaption></figure>
+      {%- for g in portfolio.items %}
+      <figure class="reveal"><img src="{{ g.image }}" alt="{{ g.image_alt }}" sizes="(max-width:620px) 100vw, (max-width:960px) 50vw, 33vw" loading="lazy">{% if g.caption %}<figcaption>{{ g.caption }}</figcaption>{% endif %}</figure>
+      {%- endfor %}
     </div>
   </div>
 </section>
@@ -542,44 +533,34 @@ img{max-width:100%;display:block}
 <section class="section process" id="process">
   <div class="wrap">
     <div class="center-head reveal" style="max-width:640px">
-      <span class="eyebrow center"><span class="dot"></span>איך זה עובד</span>
-      <h2 class="section-title">פשוט, נעים ובלי כאב ראש</h2>
-      <p class="section-lead">מהרגע שאתם פונים ועד שהתמונות אצלכם - אני מלווה אתכם בכל שלב.</p>
+      <span class="eyebrow center"><span class="dot"></span>{{ process.eyebrow }}</span>
+      <h2 class="section-title">{{ process.title }}</h2>
+      <p class="section-lead">{{ process.lead }}</p>
     </div>
     <div class="steps">
-      <div class="step reveal"><div class="n">1</div><h3>פנייה</h3><p>שולחים הודעה בוואטסאפ או מתקשרים. מספרים לי על האירוע, התאריך והמקום.</p></div>
-      <div class="step reveal"><div class="n">2</div><h3>תיאום ותכנון</h3><p>סוגרים פרטים ומחיר הוגן מראש, בלי הפתעות. יודעים בדיוק למה לצפות.</p></div>
-      <div class="step reveal"><div class="n">3</div><h3>יום הצילום</h3><p>אני מגיע, מתמזג עם האירוע ומתעד את הכל - בלי לביים ובלי להפריע לכם ליהנות.</p></div>
-      <div class="step reveal"><div class="n">4</div><h3>עריכה ואספקה</h3><p>עורך בקפידה ומעביר לכם את התמונות הכי יפות באיכות גבוהה, מהר.</p></div>
+      {%- for st in process.steps %}
+      <div class="step reveal"><div class="n">{{ loop.index }}</div><h3>{{ st.title }}</h3><p>{{ st.text }}</p></div>
+      {%- endfor %}
     </div>
   </div>
 </section>
 
 <!-- ============ TESTIMONIALS ============ -->
-<!-- אביאל: אלו טקסטים לדוגמה. החלף בביקורות אמיתיות של לקוחות (רצוי עם שם פרטי + סוג האירוע) כדי להגביר אמון והמרות. -->
 <section class="section testi" id="testimonials">
   <div class="wrap">
     <div class="center-head reveal" style="max-width:640px">
-      <span class="eyebrow center"><span class="dot"></span>לקוחות מספרים</span>
-      <h2 class="section-title">מה שנשאר אחרי שהאורחים הלכו</h2>
-      <p class="section-lead">המחמאה הכי גדולה היא כשמשפחה חוזרת אליי לאירוע הבא. הנה כמה מילים מלקוחות.</p>
+      <span class="eyebrow center"><span class="dot"></span>{{ testimonials.eyebrow }}</span>
+      <h2 class="section-title">{{ testimonials.title }}</h2>
+      <p class="section-lead">{{ testimonials.lead }}</p>
     </div>
     <div class="t-grid">
+      {%- for t in testimonials.items %}
       <div class="t-card reveal">
-        <div class="q">&rdquo;</div><div class="stars">★★★★★</div>
-        <p>אביאל תיעד לנו את הברית של הבן והרגיש כמו חלק מהמשפחה. התמונות יצאו מרגשות עד דמעות, ובדיוק תפסו את האווירה.</p>
-        <div class="who"><span class="av">ד</span><div><b>משפחת דהן</b><span>ברית מילה</span></div></div>
+        <div class="q">&rdquo;</div><div class="stars">{% for i in range(t.stars or 5) %}★{% endfor %}</div>
+        <p>{{ t.quote }}</p>
+        <div class="who"><span class="av">{{ t.initial if t.initial else t.name[0] }}</span><div><b>{{ t.name }}</b><span>{{ t.event }}</span></div></div>
       </div>
-      <div class="t-card reveal">
-        <div class="q">&rdquo;</div><div class="stars">★★★★★</div>
-        <p>הזמנו צילומי ניו בורן והתוצאה עלתה על כל הציפיות. עדין, מקצועי וסבלני עם התינוק. מחיר הוגן ושירות מהלב.</p>
-        <div class="who"><span class="av">כ</span><div><b>כהן ורעות</b><span>ניו בורן</span></div></div>
-      </div>
-      <div class="t-card reveal">
-        <div class="q">&rdquo;</div><div class="stars">★★★★★</div>
-        <p>בעלייה לתורה של הבן אביאל היה בכל מקום ובשום מקום - לא הרגשנו אותו, אבל הוא לא פספס אף רגע. ממליצים בחום!</p>
-        <div class="who"><span class="av">א</span><div><b>משפחת אזולאי</b><span>עלייה לתורה</span></div></div>
-      </div>
+      {%- endfor %}
     </div>
   </div>
 </section>
@@ -588,12 +569,12 @@ img{max-width:100%;display:block}
 <section class="band">
   <div class="wrap">
     <div class="reveal">
-      <h2>מחירים נוחים <em>לכל כיס</em> - כי לזיכרון אין תחליף</h2>
-      <p>לא צריך תקציב של חתונה כדי לשמור את הרגעים החשובים. ספרו לי על האירוע ואתאים לכם חבילה שמתאימה בדיוק לכם.</p>
+      <h2>{{ band.title }} <em>{{ band.title_accent }}</em> {{ band.title_end }}</h2>
+      <p>{{ band.text }}</p>
     </div>
     <div class="band-cta reveal">
-      <a class="btn btn-gold" href="#contact">קבלת הצעת מחיר</a>
-      <a class="btn btn-ghost" href="https://wa.me/972525551604?text=%D7%94%D7%99%D7%99%20%D7%90%D7%91%D7%99%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8" target="_blank" rel="noopener">שיחת ייעוץ ללא התחייבות</a>
+      <a class="btn btn-gold" href="#contact">{{ band.cta_primary }}</a>
+      <a class="btn btn-ghost" href="{{ waBase }}?text={{ band.cta_secondary_message | urlencode }}" target="_blank" rel="noopener">{{ band.cta_secondary }}</a>
     </div>
   </div>
 </section>
@@ -602,28 +583,28 @@ img{max-width:100%;display:block}
 <section class="section contact" id="contact">
   <div class="wrap">
     <div class="contact-info reveal">
-      <span class="eyebrow"><span class="dot"></span>בואו נדבר</span>
-      <h2 class="section-title">שריינו את התאריך שלכם</h2>
-      <p class="section-lead">היומן מתמלא מהר, במיוחד בעונת האירועים. השאירו פרטים ואחזור אליכם עם כל המידע - בלי התחייבות.</p>
+      <span class="eyebrow"><span class="dot"></span>{{ contact.eyebrow }}</span>
+      <h2 class="section-title">{{ contact.title }}</h2>
+      <p class="section-lead">{{ contact.lead }}</p>
       <div class="ci-list">
-        <a class="ci" href="https://wa.me/972525551604" target="_blank" rel="noopener">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg></span>
-          <div><b>וואטסאפ</b><span>הדרך הכי מהירה - לחצו לשליחת הודעה</span></div>
+        <a class="ci" href="{{ waBase }}" target="_blank" rel="noopener">
+          <span class="ic">{{ waIcon() }}</span>
+          <div><b>וואטסאפ</b><span>{{ contact.whatsapp_note }}</span></div>
         </a>
-        <a class="ci" href="tel:+972525551604">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <div><b>טלפון</b><span dir="ltr">052-555-1604</span></div>
+        <a class="ci" href="tel:{{ settings.phone_intl }}">
+          <span class="ic">{{ phoneIcon() }}</span>
+          <div><b>טלפון</b><span dir="ltr">{{ settings.phone_display }}</span></div>
         </a>
         <div class="ci">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg></span>
-          <div><b>אזור פעילות</b><span>כל הארץ - מגיע לאירוע שלכם</span></div>
+          <div><b>אזור פעילות</b><span>{{ settings.area }}</span></div>
         </div>
       </div>
     </div>
 
     <div class="form-card reveal">
-      <h3>נשמח לשמוע על האירוע</h3>
-      <p class="fnote">ממלאים, שולחים - וזה נפתח אצלי ישירות בוואטסאפ עם כל הפרטים.</p>
+      <h3>{{ contact.form_title }}</h3>
+      <p class="fnote">{{ contact.form_note }}</p>
       <form id="leadForm" novalidate>
         <div class="field">
           <label for="fname">שם מלא</label>
@@ -638,13 +619,9 @@ img{max-width:100%;display:block}
             <label for="ftype">סוג האירוע</label>
             <select id="ftype" name="ftype" required>
               <option value="" selected disabled>בחרו אירוע</option>
-              <option>ברית מילה</option>
-              <option>עלייה לתורה / בר מצווה</option>
-              <option>ניו בורן</option>
-              <option>חלאקה</option>
-              <option>צילומי זוגיות / משפחה</option>
-              <option>Save the date</option>
-              <option>אחר</option>
+              {%- for e in contact.event_types %}
+              <option>{{ e.label }}</option>
+              {%- endfor %}
             </select>
           </div>
         </div>
@@ -657,10 +634,10 @@ img{max-width:100%;display:block}
           <textarea id="fmsg" name="fmsg" placeholder="מקום האירוע, שעה, בקשות מיוחדות..."></textarea>
         </div>
         <button class="btn btn-wa" type="submit">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+          {{ waIcon() }}
           שליחה בוואטסאפ
         </button>
-        <p class="form-privacy">הפרטים נשלחים ישירות לאביאל, ולא נשמרים בשום מקום אחר.</p>
+        <p class="form-privacy">{{ contact.form_privacy }}</p>
       </form>
     </div>
   </div>
@@ -671,17 +648,15 @@ img{max-width:100%;display:block}
   <div class="wrap">
     <div class="top">
       <a class="brand" href="#top">
-        <img src="assets/img/logo-emblem-t.png" alt="לוגו מבעד לעדשה" />
-        <span class="bt"><b>מבעד לעדשה</b><span>אביאל מלכא · צלם אירועים</span></span>
+        <img src="{{ settings.logo }}" alt="לוגו {{ settings.brand_name }}" eleventy:ignore />
+        <span class="bt"><b>{{ settings.brand_name }}</b><span>{{ settings.brand_tagline }}</span></span>
       </a>
       <div class="f-links">
         <div class="f-col">
           <h4>שירותים</h4>
-          <a href="#services">בריתות</a>
-          <a href="#services">עלייה לתורה</a>
-          <a href="#services">ניו בורן</a>
-          <a href="#services">חלאקה</a>
-          <a href="#services">צילומי זוגיות</a>
+          {%- for s in services.items %}{% if loop.index <= 5 %}
+          <a href="#services">{{ s.title }}</a>
+          {%- endif %}{% endfor %}
         </div>
         <div class="f-col">
           <h4>ניווט</h4>
@@ -692,14 +667,14 @@ img{max-width:100%;display:block}
         </div>
         <div class="f-col">
           <h4>יצירת קשר</h4>
-          <a href="tel:+972525551604" dir="ltr">052-555-1604</a>
-          <a href="https://wa.me/972525551604" target="_blank" rel="noopener">וואטסאפ</a>
-          <p>אזור פעילות: כל הארץ</p>
+          <a href="tel:{{ settings.phone_intl }}" dir="ltr">{{ settings.phone_display }}</a>
+          <a href="{{ waBase }}" target="_blank" rel="noopener">וואטסאפ</a>
+          <p>אזור פעילות: {{ settings.area }}</p>
         </div>
       </div>
     </div>
     <div class="copy">
-      <span>© <span id="year">2025</span> מבעד לעדשה · אביאל מלכא · כל הזכויות שמורות</span>
+      <span>© <span id="year">2025</span> {{ settings.brand_name }} · {{ settings.photographer }} · כל הזכויות שמורות</span>
       <span>עוצב ונבנה באהבה לרגעים שלא חוזרים</span>
     </div>
   </div>
@@ -707,12 +682,12 @@ img{max-width:100%;display:block}
 
 <!-- ============ MOBILE CTA ============ -->
 <div class="mobile-cta">
-  <a class="m-call" href="tel:+972525551604">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <a class="m-call" href="tel:{{ settings.phone_intl }}">
+    {{ phoneIcon() }}
     התקשרו
   </a>
-  <a class="m-wa" href="https://wa.me/972525551604?text=%D7%94%D7%99%D7%99%20%D7%90%D7%91%D7%99%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+  <a class="m-wa" href="{{ waBase }}?text={{ hero.cta_message | urlencode }}" target="_blank" rel="noopener">
+    {{ waIcon() }}
     וואטסאפ
   </a>
 </div>
@@ -754,7 +729,7 @@ document.getElementById('leadForm').addEventListener('submit', function(ev){
   t += 'טלפון לחזרה: ' + phone + '.\n';
   if(msg) t += 'פרטים: ' + msg + '\n';
   t += 'אשמח לפרטים ולמחיר. תודה!';
-  window.open('https://wa.me/972525551604?text=' + encodeURIComponent(t), '_blank');
+  window.open('{{ waBase }}?text=' + encodeURIComponent(t), '_blank');
 });
 </script>
 </body>

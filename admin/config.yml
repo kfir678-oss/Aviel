@@ -1,0 +1,247 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+# ------------------------------------------------------------------
+# הגדרות מערכת ניהול התוכן (Sveltia CMS)
+# כל שינוי כאן משנה את מה שאביאל רואה בממשק /admin
+# ------------------------------------------------------------------
+
+backend:
+  name: github
+  repo: kfir678-oss/Aviel
+  branch: main
+  # שרת ההתחברות רץ על אותו דומיין של האתר (api/auth.js + api/callback.js).
+  # אם עוברים לדומיין קבוע - לעדכן כאן וגם את ה-callback ב-GitHub OAuth App.
+  base_url: https://aviel-phi.vercel.app
+
+# העלאת תמונות מהממשק נשמרת כאן
+media_folder: src/assets/img
+public_folder: /assets/img
+
+# שמירה ישירות ל-main (בלי תהליך אישור) - הכי פשוט ללקוח יחיד
+publish_mode: simple
+
+collections:
+  - name: content
+    label: תוכן האתר
+    files:
+      # ---------------------------------------------------- כללי
+      - name: settings
+        label: פרטים כלליים ויצירת קשר
+        file: src/_data/settings.json
+        icon: settings
+        description: שם העסק, טלפון, וואטסאפ, לוגו ואזור פעילות. משתנה בכל האתר בבת אחת.
+        fields:
+          - { name: brand_name, label: שם העסק, widget: string }
+          - { name: brand_tagline, label: שורת משנה בלוגו, widget: string }
+          - { name: photographer, label: שם הצלם, widget: string }
+          - { name: phone_display, label: טלפון לתצוגה, widget: string, hint: "כמו שרוצים שיופיע באתר, לדוגמה 052-555-1604" }
+          - { name: phone_intl, label: טלפון ללחיצה, widget: string, hint: "פורמט בינלאומי, לדוגמה +972525551604" }
+          - { name: whatsapp_number, label: מספר וואטסאפ, widget: string, hint: "בלי פלוס ובלי מקפים, לדוגמה 972525551604" }
+          - { name: area, label: אזור פעילות, widget: string }
+          - { name: site_url, label: כתובת האתר, widget: string, hint: "חשוב לגוגל. חייב להסתיים בלוכסן /" }
+          - { name: logo, label: לוגו, widget: image }
+          - { name: favicon, label: אייקון בלשונית הדפדפן, widget: image }
+
+      # ---------------------------------------------------- גוגל
+      - name: seo
+        label: גוגל ורשתות חברתיות
+        file: src/_data/seo.json
+        icon: search
+        description: הכותרת והתיאור שמופיעים בתוצאות החיפוש ובשיתוף בוואטסאפ ובפייסבוק.
+        fields:
+          - { name: title, label: כותרת בגוגל, widget: string, hint: "עד כ-60 תווים" }
+          - { name: description, label: תיאור בגוגל, widget: text, hint: "עד כ-155 תווים" }
+          - { name: keywords, label: מילות מפתח, widget: text, hint: "מופרדות בפסיקים" }
+          - { name: og_title, label: כותרת בשיתוף ברשתות, widget: string }
+          - { name: og_description, label: תיאור בשיתוף ברשתות, widget: text }
+          - { name: og_image, label: תמונה בשיתוף ברשתות, widget: image }
+          - name: knows_about
+            label: תחומי התמחות לגוגל
+            label_singular: תחום
+            widget: list
+            summary: '{{fields.term}}'
+            hint: מופיע רק בקוד שגוגל קורא (Schema). מומלץ לכתוב במונחים שאנשים מחפשים.
+            fields:
+              - { name: term, label: תחום, widget: string }
+          - name: social_links
+            label: קישורים לרשתות חברתיות
+            label_singular: קישור
+            widget: list
+            required: false
+            summary: '{{fields.url}}'
+            fields:
+              - { name: url, label: כתובת, widget: string, hint: "לדוגמה https://instagram.com/..." }
+
+      # ---------------------------------------------------- ראשי
+      - name: hero
+        label: מסך פתיחה
+        file: src/_data/hero.json
+        icon: home
+        description: התמונה הגדולה והכותרת הראשונה שרואים בכניסה לאתר.
+        fields:
+          - { name: eyebrow, label: שורה קטנה מעל הכותרת, widget: string }
+          - { name: title, label: כותרת ראשית, widget: string }
+          - { name: title_accent, label: המשך הכותרת בזהב, widget: string }
+          - { name: sub, label: פסקת פתיחה, widget: text }
+          - { name: image, label: תמונת רקע, widget: image, hint: "רצוי תמונה לרוחב, לפחות 1600 פיקסל" }
+          - { name: image_alt, label: תיאור התמונה, widget: string, hint: "לעיוורים ולגוגל - מה רואים בתמונה" }
+          - { name: cta_label, label: טקסט על כפתור הוואטסאפ, widget: string }
+          - { name: cta_message, label: ההודעה שנפתחת בוואטסאפ, widget: string }
+          - name: trust
+            label: שורת יתרונות
+            label_singular: יתרון
+            widget: list
+            summary: '{{fields.text}}'
+            fields:
+              - { name: text, label: טקסט, widget: string }
+
+      # ---------------------------------------------------- שירותים
+      - name: services
+        label: שירותים (מה מצלמים)
+        file: src/_data/services.json
+        icon: photo_camera
+        description: סוגי האירועים שאתה מצלם. הסדר כאן הוא הסדר באתר - אפשר לגרור.
+        fields:
+          - { name: eyebrow, label: שורה קטנה מעל הכותרת, widget: string }
+          - { name: title, label: כותרת הסקשן, widget: string }
+          - { name: lead, label: משפט הסבר, widget: text }
+          - name: items
+            label: השירותים
+            label_singular: שירות
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { name: title, label: שם השירות, widget: string }
+              - { name: text, label: תיאור קצר, widget: text }
+              - { name: image, label: תמונה, widget: image, hint: "רצוי תמונה לאורך (4:5)" }
+              - { name: image_alt, label: תיאור התמונה, widget: string }
+
+      # ---------------------------------------------------- עליי
+      - name: about
+        label: עליי
+        file: src/_data/about.json
+        icon: person
+        fields:
+          - { name: eyebrow, label: שורה קטנה מעל הכותרת, widget: string }
+          - { name: title, label: כותרת, widget: string }
+          - { name: lead, label: פסקה ראשונה (מודגשת), widget: text }
+          - { name: body, label: פסקה שנייה, widget: text }
+          - { name: image, label: תמונה שלך בעבודה, widget: image }
+          - { name: image_alt, label: תיאור התמונה, widget: string }
+          - { name: badge_title, label: כותרת התווית על התמונה, widget: string }
+          - { name: badge_text, label: טקסט התווית על התמונה, widget: string }
+          - { name: signature, label: חתימה בסוף, widget: string }
+          - name: points
+            label: למה לבחור בי
+            label_singular: נקודה
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - name: icon
+                label: אייקון
+                widget: select
+                options:
+                  - { label: לב, value: heart }
+                  - { label: עין, value: eye }
+                  - { label: שעון, value: clock }
+                  - { label: ידיים, value: hands }
+                  - { label: מצלמה, value: camera }
+                  - { label: כוכב, value: star }
+              - { name: title, label: כותרת, widget: string }
+              - { name: text, label: תיאור, widget: string }
+
+      # ---------------------------------------------------- תיק עבודות
+      - name: portfolio
+        label: תיק עבודות (גלריה)
+        file: src/_data/portfolio.json
+        icon: photo_library
+        description: הגלריה באתר. אפשר להוסיף, למחוק ולגרור תמונות לסדר חדש.
+        fields:
+          - { name: eyebrow, label: שורה קטנה מעל הכותרת, widget: string }
+          - { name: title, label: כותרת הסקשן, widget: string }
+          - { name: lead, label: משפט הסבר, widget: text }
+          - name: items
+            label: תמונות
+            label_singular: תמונה
+            widget: list
+            summary: '{{fields.caption}}'
+            fields:
+              - { name: image, label: תמונה, widget: image }
+              - { name: image_alt, label: תיאור התמונה, widget: string, hint: "לגוגל - מה רואים בתמונה" }
+              - { name: caption, label: כיתוב שמופיע במעבר עכבר, widget: string, required: false }
+
+      # ---------------------------------------------------- תהליך
+      - name: process
+        label: איך זה עובד
+        file: src/_data/process.json
+        icon: format_list_numbered
+        fields:
+          - { name: eyebrow, label: שורה קטנה מעל הכותרת, widget: string }
+          - { name: title, label: כותרת הסקשן, widget: string }
+          - { name: lead, label: משפט הסבר, widget: text }
+          - name: steps
+            label: השלבים
+            label_singular: שלב
+            widget: list
+            summary: '{{fields.title}}'
+            hint: המספור מתעדכן אוטומטית לפי הסדר
+            fields:
+              - { name: title, label: שם השלב, widget: string }
+              - { name: text, label: תיאור, widget: text }
+
+      # ---------------------------------------------------- המלצות
+      - name: testimonials
+        label: המלצות לקוחות
+        file: src/_data/testimonials.json
+        icon: reviews
+        description: מומלץ להחליף בביקורות אמיתיות עם שם פרטי וסוג האירוע.
+        fields:
+          - { name: eyebrow, label: שורה קטנה מעל הכותרת, widget: string }
+          - { name: title, label: כותרת הסקשן, widget: string }
+          - { name: lead, label: משפט הסבר, widget: text }
+          - name: items
+            label: ההמלצות
+            label_singular: המלצה
+            widget: list
+            summary: '{{fields.name}}'
+            fields:
+              - { name: quote, label: תוכן ההמלצה, widget: text }
+              - { name: name, label: שם הממליץ, widget: string }
+              - { name: event, label: סוג האירוע, widget: string }
+              - { name: initial, label: אות בעיגול, widget: string, required: false, hint: "אות אחת. אם משאירים ריק - נלקחת האות הראשונה מהשם" }
+              - { name: stars, label: כוכבים, widget: number, default: 5, value_type: int, min: 1, max: 5 }
+
+      # ---------------------------------------------------- פס מחירים
+      - name: band
+        label: פס המחירים
+        file: src/_data/band.json
+        icon: sell
+        description: הפס הכהה עם המסר על מחירים נוחים.
+        fields:
+          - { name: title, label: תחילת הכותרת, widget: string }
+          - { name: title_accent, label: החלק בזהב, widget: string }
+          - { name: title_end, label: סוף הכותרת, widget: string }
+          - { name: text, label: טקסט, widget: text }
+          - { name: cta_primary, label: כפתור ראשי, widget: string }
+          - { name: cta_secondary, label: כפתור משני, widget: string }
+          - { name: cta_secondary_message, label: ההודעה שנפתחת בוואטסאפ, widget: string }
+
+      # ---------------------------------------------------- צור קשר
+      - name: contact
+        label: טופס יצירת קשר
+        file: src/_data/contact.json
+        icon: mail
+        fields:
+          - { name: eyebrow, label: שורה קטנה מעל הכותרת, widget: string }
+          - { name: title, label: כותרת הסקשן, widget: string }
+          - { name: lead, label: משפט הסבר, widget: text }
+          - { name: whatsapp_note, label: טקסט ליד כפתור הוואטסאפ, widget: string }
+          - { name: form_title, label: כותרת הטופס, widget: string }
+          - { name: form_note, label: הסבר מתחת לכותרת הטופס, widget: string }
+          - { name: form_privacy, label: הערת פרטיות בתחתית הטופס, widget: string }
+          - name: event_types
+            label: סוגי אירועים בתפריט הטופס
+            label_singular: סוג אירוע
+            widget: list
+            summary: '{{fields.label}}'
+            fields:
+              - { name: label, label: שם, widget: string }

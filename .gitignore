@@ -1,6 +1,9 @@
 # dependencies
 node_modules/
 
+# build output
+_site/
+
 # build scratch + local screenshots
 _build/
 temporary screenshots/
