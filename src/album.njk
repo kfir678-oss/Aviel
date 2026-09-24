@@ -1,0 +1,157 @@
+---
+pagination:
+  data: portfolio.albums
+  size: 1
+  alias: album
+permalink: "gallery/{{ album.slug }}/index.html"
+eleventyExcludeFromCollections: true
+---
+{%- from "macros.njk" import waIcon, phoneIcon -%}
+{%- set waBase = "https://wa.me/" + settings.whatsapp_number -%}
+{%- set pageUrl = settings.site_url + "gallery/" + album.slug + "/" -%}
+{%- set cover = album.cover or album.images[0] -%}
+{%- set pageTitle = album.title + " | תיק עבודות | " + settings.photographer + " - " + settings.brand_name -%}
+{%- set pageDesc = "גלריית " + album.title + " - צילומים של " + settings.photographer + ", צלם אירועים. " + (album.description or "") -%}
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDesc }}" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#211913" />
+<link rel="canonical" href="{{ pageUrl }}" />
+<link rel="icon" type="image/png" href="{{ settings.favicon }}" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="he_IL" />
+<meta property="og:site_name" content="{{ settings.brand_name }} - {{ settings.photographer }}" />
+<meta property="og:title" content="{{ pageTitle }}" />
+<meta property="og:description" content="{{ pageDesc }}" />
+<meta property="og:image" content="{{ cover }}" />
+<meta property="og:url" content="{{ pageUrl }}" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+{% include "styles.njk" %}
+</style>
+</head>
+<body class="album-page">
+
+<header class="header scrolled" id="header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="{{ settings.brand_name }} - {{ settings.photographer }}, לדף הבית">
+      <img src="{{ settings.logo }}" alt="לוגו {{ settings.brand_name }}" eleventy:ignore />
+      <span class="bt"><b>{{ settings.brand_name }}</b><span>{{ settings.brand_tagline }}</span></span>
+    </a>
+    <a class="back-link" href="/#portfolio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      לכל הגלריות
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="album-head">
+    <div class="wrap">
+      <span class="eyebrow center"><span class="dot"></span>{{ portfolio.eyebrow }}</span>
+      <h1>{{ album.title }}</h1>
+      {%- if album.description %}<p class="section-lead">{{ album.description }}</p>{% endif %}
+      <span class="album-count">{{ album.images.length }} תמונות</span>
+      <nav class="album-nav" aria-label="גלריות נוספות">
+        {%- for al in portfolio.albums %}{% if al.images and al.images.length %}
+        <a href="/gallery/{{ al.slug }}/"{% if al.slug == album.slug %} aria-current="page"{% endif %}>{{ al.title }}</a>
+        {%- endif %}{% endfor %}
+      </nav>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="gallery">
+      {%- for img in album.images %}
+      <figure><button class="open" type="button" data-i="{{ loop.index0 }}" aria-label="הגדלת תמונה {{ loop.index }}"><img src="{{ img }}" alt="{{ album.title }} - צילום של {{ settings.photographer }} ({{ loop.index }})" sizes="(max-width:620px) 50vw, (max-width:960px) 50vw, 33vw" loading="{{ 'eager' if loop.index <= 6 else 'lazy' }}"></button></figure>
+      {%- endfor %}
+    </div>
+  </section>
+
+  <section class="album-cta">
+    <div class="wrap">
+      <h2>רוצים תמונות כאלה מהאירוע שלכם?</h2>
+      <p>{{ hero.sub }}</p>
+      <div class="row">
+        <a class="btn btn-wa" href="{{ waBase }}?text={{ ('היי אביאל, ראיתי את גלריית ה' + album.title + ' באתר ואשמח לפרטים') | urlencode }}" target="_blank" rel="noopener">{{ waIcon() }} {{ hero.cta_label }}</a>
+        <a class="btn btn-outline" href="/#portfolio">לכל הגלריות</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="copy" style="margin-top:0">
+      <span>© <span id="year">2026</span> {{ settings.brand_name }} · {{ settings.photographer }} · כל הזכויות שמורות</span>
+      <a href="tel:{{ settings.phone_intl }}" dir="ltr">{{ settings.phone_display }}</a>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-cta">
+  <a class="m-call" href="tel:{{ settings.phone_intl }}">{{ phoneIcon() }} התקשרו</a>
+  <a class="m-wa" href="{{ waBase }}?text={{ hero.cta_message | urlencode }}" target="_blank" rel="noopener">{{ waIcon() }} וואטסאפ</a>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="תצוגת תמונה" hidden>
+  <img id="lbImg" alt="" eleventy:ignore />
+  <button class="lb-close" type="button" aria-label="סגירה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg></button>
+  <button class="lb-prev" type="button" aria-label="התמונה הקודמת"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button class="lb-next" type="button" aria-label="התמונה הבאה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <span class="lb-count" id="lbCount" dir="ltr"></span>
+</div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+(function(){
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('.gallery .open img'));
+  var lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'), cnt = document.getElementById('lbCount');
+  var cur = 0, lastFocus = null;
+  // pick the best size from the optimized srcset for the current screen
+  function bestSrc(img){
+    var set = (img.getAttribute('srcset') || '').split(',').map(function(s){
+      var p = s.trim().split(/\s+/); return {u:p[0], w:parseInt(p[1],10)||0};
+    }).filter(function(c){ return c.u; }).sort(function(a,b){ return a.w-b.w; });
+    if(!set.length) return img.currentSrc || img.src;
+    var need = Math.max(window.innerWidth, window.innerHeight) * (window.devicePixelRatio || 1);
+    for(var i=0;i<set.length;i++){ if(set[i].w >= need) return set[i].u; }
+    return set[set.length-1].u;
+  }
+  function show(i){
+    cur = (i + imgs.length) % imgs.length;
+    lbImg.src = bestSrc(imgs[cur]);
+    lbImg.alt = imgs[cur].alt;
+    cnt.textContent = (cur+1) + ' / ' + imgs.length;
+    var nx = imgs[(cur+1) % imgs.length]; if(nx){ (new Image()).src = bestSrc(nx); }
+  }
+  function open(i){ lastFocus = document.activeElement; lb.hidden = false; lb.classList.add('open'); document.body.style.overflow='hidden'; show(i); lb.querySelector('.lb-close').focus(); }
+  function close(){ lb.classList.remove('open'); lb.hidden = true; document.body.style.overflow=''; lbImg.removeAttribute('src'); if(lastFocus) lastFocus.focus(); }
+  document.querySelectorAll('.gallery .open').forEach(function(b){ b.addEventListener('click', function(){ open(parseInt(b.dataset.i,10)); }); });
+  lb.querySelector('.lb-close').addEventListener('click', close);
+  lb.querySelector('.lb-next').addEventListener('click', function(e){ e.stopPropagation(); show(cur+1); });
+  lb.querySelector('.lb-prev').addEventListener('click', function(e){ e.stopPropagation(); show(cur-1); });
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if(lb.hidden) return;
+    if(e.key === 'Escape') close();
+    else if(e.key === 'ArrowLeft') show(cur+1);   // RTL: left = next
+    else if(e.key === 'ArrowRight') show(cur-1);
+  });
+  var x0 = null;
+  lb.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+  lb.addEventListener('touchend', function(e){
+    if(x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if(Math.abs(dx) > 45) show(dx > 0 ? cur+1 : cur-1);  // RTL swipe: right = next
+  });
+})();
+</script>
+</body>
+</html>

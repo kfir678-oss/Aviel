@@ -151,23 +151,25 @@ collections:
 
       # ---------------------------------------------------- תיק עבודות
       - name: portfolio
-        label: תיק עבודות (גלריה)
+        label: תיק עבודות (גלריות)
         file: src/_data/portfolio.json
         icon: photo_library
-        description: הגלריה באתר. אפשר להוסיף, למחוק ולגרור תמונות לסדר חדש.
+        description: הגלריות באתר - תיקייה לכל סוג צילום. אפשר להוסיף גלריה, להעלות אליה הרבה תמונות בבת אחת ולגרור לסדר חדש.
         fields:
           - { name: eyebrow, label: שורה קטנה מעל הכותרת, widget: string }
           - { name: title, label: כותרת הסקשן, widget: string }
           - { name: lead, label: משפט הסבר, widget: text }
-          - name: items
-            label: תמונות
-            label_singular: תמונה
+          - name: albums
+            label: גלריות
+            label_singular: גלריה
             widget: list
-            summary: '{{fields.caption}}'
+            summary: '{{fields.title}}'
             fields:
-              - { name: image, label: תמונה, widget: image }
-              - { name: image_alt, label: תיאור התמונה, widget: string, hint: "לגוגל - מה רואים בתמונה" }
-              - { name: caption, label: כיתוב שמופיע במעבר עכבר, widget: string, required: false }
+              - { name: title, label: שם הגלריה, widget: string, hint: "כמו שיופיע באתר, לדוגמה: ברית" }
+              - { name: slug, label: כתובת הגלריה באנגלית, widget: string, pattern: ['^[a-z0-9-]+$', "רק אותיות אנגליות קטנות, מספרים ומקף"], hint: "מופיע בכתובת: /gallery/brit - באנגלית, בלי רווחים" }
+              - { name: description, label: משפט קצר על הגלריה, widget: string, required: false }
+              - { name: cover, label: תמונת שער, widget: image, required: false, hint: "אם ריק - התמונה הראשונה בגלריה" }
+              - { name: images, label: תמונות, widget: image, multiple: true, hint: "אפשר לבחור הרבה תמונות בבת אחת. גוררים כדי לשנות סדר." }
 
       # ---------------------------------------------------- תהליך
       - name: process
