@@ -1,0 +1,99 @@
+---
+permalink: accessibility/index.html
+eleventyExcludeFromCollections: true
+---
+{%- from "macros.njk" import waIcon, phoneIcon -%}
+{%- set waBase = "https://wa.me/" + settings.whatsapp_number -%}
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>הצהרת נגישות | {{ settings.photographer }} - {{ settings.brand_name }}</title>
+<meta name="description" content="הצהרת הנגישות של אתר {{ settings.brand_name }} - {{ settings.photographer }}, צלם אירועים." />
+<meta name="theme-color" content="#F5F0E8" />
+<link rel="canonical" href="{{ settings.site_url }}accessibility/" />
+<link rel="icon" type="image/png" href="{{ settings.favicon }}" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+{% include "styles.njk" %}
+.legal{max-width:780px;margin:0 auto;padding-block:clamp(110px,14vw,150px) 80px}
+.legal h1{font-size:clamp(2.1rem,5vw,3.2rem);color:var(--ink)}
+.legal h2{font-size:1.4rem;color:var(--ink);margin-top:34px;margin-bottom:10px}
+.legal p,.legal li{color:var(--text);font-size:1.02rem}
+.legal ul{padding-inline-start:22px;margin:0}
+.legal li{margin-bottom:6px}
+.legal .meta{color:var(--muted);margin-top:10px}
+.legal a{color:var(--gold-deep);text-decoration:underline}
+.legal .contact-box{background:var(--paper);border:1px solid var(--sand);border-radius:14px;padding:18px 22px;margin-top:12px}
+</style>
+</head>
+<body class="album-page">
+<a class="skip-link" href="#main">דלג לתוכן הראשי</a>
+
+<header class="header scrolled" id="header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="{{ settings.brand_name }} - {{ settings.photographer }}, לדף הבית">
+      <img src="{{ settings.logo }}" alt="לוגו {{ settings.brand_name }}" eleventy:ignore />
+      <span class="bt"><b>{{ settings.brand_name }}</b><span>{{ settings.brand_tagline }}</span></span>
+    </a>
+    <a class="back-link" href="/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      לדף הבית
+    </a>
+  </div>
+</header>
+
+<main id="main" tabindex="-1" class="wrap">
+  <article class="legal">
+    <h1>הצהרת נגישות</h1>
+    <p class="meta">עודכן לאחרונה: {{ accessibility.updated }}</p>
+
+    <p style="margin-top:22px">אני רואה חשיבות רבה במתן שירות שוויוני ונגיש לכל הלקוחות, ובכלל זה לאנשים עם מוגבלות. האתר הונגש בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג-2013, ולתקן הישראלי ת"י 5568, המבוסס על הנחיות WCAG 2.0 ברמה AA.</p>
+
+    <h2>מה נעשה באתר</h2>
+    <ul>
+      <li>מבנה ברור עם כותרות, אזורי תוכן וקישור "דלג לתוכן הראשי".</li>
+      <li>ניווט מלא באמצעות המקלדת, עם סימון ברור של הרכיב שבפוקוס.</li>
+      <li>טקסט חלופי לתמונות, ותוויות לכל שדות הטופס והכפתורים.</li>
+      <li>ניגודיות צבעים מותאמת לטקסט.</li>
+      <li>התאמה לקוראי מסך ולמכשירים ניידים, ותמיכה בהגדרת "הפחתת תנועה" של מערכת ההפעלה.</li>
+      <li>תפריט נגישות (הכפתור העגול בפינת המסך): הגדלת והקטנת טקסט, ניגודיות גבוהה, גווני אפור, הדגשת קישורים, גופן קריא ועצירת אנימציות.</li>
+      <li>גלריית התמונות ניתנת לתפעול במקלדת (חיצים לדפדוף, Esc לסגירה).</li>
+    </ul>
+
+    <h2>דפדפנים ומכשירים</h2>
+    <p>האתר מותאם לדפדפנים הנפוצים (Chrome, Safari, Firefox, Edge) בגרסאותיהם העדכניות, במחשב ובטלפון הנייד.</p>
+
+    <h2>מגבלות ידועות</h2>
+    <p>למרות המאמצים, ייתכן שחלק מהתכנים אינם נגישים במלואם. למשל, תמונות בגלריות מתוארות באופן כללי ולא בפירוט מלא, וטופס יצירת הקשר פותח את וואטסאפ, שהוא שירות חיצוני. אם נתקלתם בקושי, אשמח שתעדכנו אותי ואטפל בכך בהקדם.</p>
+
+    <h2>הסדרי נגישות בשירות</h2>
+    <p>שירות הצילום ניתן במקום האירוע שלכם. ניתן לתאם מראש כל התאמה שתידרש.</p>
+
+    <h2>פרטי רכז הנגישות</h2>
+    <div class="contact-box">
+      <p><b>שם:</b> {{ accessibility.coordinator }}</p>
+      <p><b>טלפון:</b> <a href="tel:{{ settings.phone_intl }}" dir="ltr">{{ settings.phone_display }}</a></p>
+      <p><b>וואטסאפ:</b> <a href="{{ waBase }}" target="_blank" rel="noopener">שליחת הודעה</a></p>
+      {%- if accessibility.email %}
+      <p><b>דוא"ל:</b> <a href="mailto:{{ accessibility.email }}">{{ accessibility.email }}</a></p>
+      {%- endif %}
+    </div>
+  </article>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="copy" style="margin-top:0">
+      <span>© <span id="year">2026</span> {{ settings.brand_name }} · {{ settings.photographer }}</span>
+      <a href="/">לדף הבית</a>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+{% include "a11y.njk" %}
+</body>
+</html>

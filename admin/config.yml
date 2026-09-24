@@ -149,6 +149,17 @@ collections:
               - { name: title, label: כותרת, widget: string }
               - { name: text, label: תיאור, widget: string }
 
+      # ---------------------------------------------------- נגישות
+      - name: accessibility
+        label: הצהרת נגישות
+        file: src/_data/accessibility.json
+        icon: accessibility
+        description: פרטי רכז הנגישות שמופיעים בדף הצהרת הנגישות. הטלפון נלקח מהפרטים הכלליים.
+        fields:
+          - { name: coordinator, label: שם רכז הנגישות, widget: string }
+          - { name: email, label: דוא"ל לפניות נגישות, widget: string, required: false }
+          - { name: updated, label: תאריך עדכון ההצהרה, widget: string, hint: "לדוגמה 24.9.2026" }
+
       # ---------------------------------------------------- תיק עבודות
       - name: portfolio
         label: תיק עבודות (גלריות)

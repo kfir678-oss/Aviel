@@ -38,6 +38,7 @@ eleventyExcludeFromCollections: true
 </style>
 </head>
 <body class="album-page">
+<a class="skip-link" href="#main">דלג לתוכן הראשי</a>
 
 <header class="header scrolled" id="header">
   <div class="wrap">
@@ -52,7 +53,7 @@ eleventyExcludeFromCollections: true
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
   <section class="album-head">
     <div class="wrap">
       <span class="eyebrow center"><span class="dot"></span>{{ portfolio.eyebrow }}</span>
@@ -91,7 +92,7 @@ eleventyExcludeFromCollections: true
   <div class="wrap">
     <div class="copy" style="margin-top:0">
       <span>© <span id="year">2026</span> {{ settings.brand_name }} · {{ settings.photographer }} · כל הזכויות שמורות</span>
-      <a href="tel:{{ settings.phone_intl }}" dir="ltr">{{ settings.phone_display }}</a>
+      <span><a href="/accessibility/">הצהרת נגישות</a> · <a href="tel:{{ settings.phone_intl }}" dir="ltr">{{ settings.phone_display }}</a></span>
     </div>
   </div>
 </footer>
@@ -115,6 +116,22 @@ document.getElementById('year').textContent = new Date().getFullYear();
   var imgs = Array.prototype.slice.call(document.querySelectorAll('.gallery .open img'));
   var lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'), cnt = document.getElementById('lbCount');
   var cur = 0, lastFocus = null;
+  // masonry via flex columns (consistent on iPhone/Safari and Android)
+  (function(){
+    var g = document.querySelector('.gallery'); if(!g) return;
+    var figs = Array.prototype.slice.call(g.querySelectorAll('figure')), lastN = 0;
+    function layout(){
+      var n = window.innerWidth <= 960 ? 2 : 3; if(n === lastN) return; lastN = n;
+      var cols = [], h = [];
+      for(var i=0;i<n;i++){ var c = document.createElement('div'); c.className = 'mcol'; cols.push(c); h.push(0); }
+      figs.forEach(function(f){
+        var im = f.querySelector('img'), w = +im.getAttribute('width') || 1, hh = +im.getAttribute('height') || 1;
+        var k = h.indexOf(Math.min.apply(null, h)); cols[k].appendChild(f); h[k] += hh / w;
+      });
+      g.innerHTML = ''; cols.forEach(function(c){ g.appendChild(c); }); g.classList.add('masonry');
+    }
+    layout(); var t; window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(layout, 150); });
+  })();
   // pick the best size from the optimized srcset for the current screen
   function bestSrc(img){
     var set = (img.getAttribute('srcset') || '').split(',').map(function(s){
@@ -141,6 +158,12 @@ document.getElementById('year').textContent = new Date().getFullYear();
   lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
   document.addEventListener('keydown', function(e){
     if(lb.hidden) return;
+    if(e.key === 'Tab'){ // keep keyboard focus inside the open viewer
+      var f = lb.querySelectorAll('button'), first = f[0], last = f[f.length-1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+      return;
+    }
     if(e.key === 'Escape') close();
     else if(e.key === 'ArrowLeft') show(cur+1);   // RTL: left = next
     else if(e.key === 'ArrowRight') show(cur-1);
@@ -153,5 +176,6 @@ document.getElementById('year').textContent = new Date().getFullYear();
   });
 })();
 </script>
+{% include "a11y.njk" %}
 </body>
 </html>

@@ -4,19 +4,45 @@
   "outputDirectory": "_site",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/auth", "destination": "/api/auth" },
-    { "source": "/callback", "destination": "/api/callback" }
+    {
+      "source": "/auth",
+      "destination": "/api/auth"
+    },
+    {
+      "source": "/callback",
+      "destination": "/api/callback"
+    }
   ],
   "headers": [
     {
       "source": "/assets/img/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=604800, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, must-revalidate"
+        }
       ]
     },
     {
       "source": "/admin/(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/gallery",
+      "destination": "/gallery/brit/",
+      "permanent": false
+    },
+    {
+      "source": "/gallery/",
+      "destination": "/gallery/brit/",
+      "permanent": false
     }
   ]
 }
